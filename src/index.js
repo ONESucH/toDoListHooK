@@ -24,25 +24,9 @@ const App = () => {
     inputRef.current.value = '';
   }, [ subData ]);
 
-  const removeItem = (id) => {
+  const updateItem = (id, status) => {
     const updateArr = arr.map((el, index) => {
-      if (index === id) el.status = 2;
-      return el;
-    });
-    setArr([ ...updateArr ]);
-  };
-
-  const successItem = (id) => {
-    const updateArr = arr.map((el, index) => {
-      if (index === id) el.status = 1;
-      return el;
-    });
-    setArr([ ...updateArr ]);
-  };
-
-  const removeToActive = (id) => {
-    const updateArr = arr.map((el, index) => {
-      if (index === id) el.status = 0;
+      if (index === id) el.status = status;
       return el;
     });
     setArr([ ...updateArr ]);
@@ -63,9 +47,7 @@ const App = () => {
         </ul>
         <List
           arr={arr}
-          removeItem={removeItem}
-          removeToActive={removeToActive}
-          successItem={successItem}
+          updateItem={updateItem}
           statusActive={statusActive}
         />
       </div>
